@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import Stats from 'stats';
+// import MODEL_URL from "./Models/Man.glb"
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
@@ -24,7 +25,8 @@ let loadedFont = null;
 let loadedGltfModel = null; // Will store GLTF data including scene and animations
 const fontLoader = new FontLoader();
 const gltfLoader = new GLTFLoader();
-const MODEL_URL = './Models/Man.glb'; // ADJUST PATH AS NEEDED
+const MODEL_URL = "./Models/Man.glb" // ADJUST PATH AS NEEDED
+
 const MODEL_SCALE = 8;
 let modelBaseHeightOffset = 0; // Calculated offset to place feet on floor
 
