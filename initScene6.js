@@ -24,7 +24,7 @@ let loadedFont = null;
 let loadedGltfModel = null; // Will store GLTF data including scene and animations
 const fontLoader = new FontLoader();
 const gltfLoader = new GLTFLoader();
-const MODEL_URL = '/Models/Man.txt'; // ADJUST PATH AS NEEDED
+const MODEL_URL = './Models/Man.glb'; // ADJUST PATH AS NEEDED
 const MODEL_SCALE = 8;
 let modelBaseHeightOffset = 0; // Calculated offset to place feet on floor
 
