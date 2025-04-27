@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Retail Customer Flow Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        #controls {
+            position: absolute;
+            top: 50px; /* Adjusted top position to move controls down */
+            left: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            z-index: 2; /* Higher z-index to bring controls to the front */
+        }
+        #stats {
+            position: absolute;
+            top: -5px;
+            left: 10px;
+            display: block;
+            z-index: 1; /* Lower z-index to keep stats behind controls */
+        }
+        #stats-container { /* New container for the stats */
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+    </style>
+    <script type="importmap" >
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="controls">
+        <button id="startPause">▶/▌▌</button>
+        <button id="reset">⟲ Reset</button>
+        Speed: <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+        Count: <input type="number" id="count" min="1" max="200" value="50">
+        Scenario:
+        <select id="scenario">
+            <option value="baseline">Baseline</option>
+            <option value="alternate">Alternate layout</option>
+        </select>
+        <label><input type="checkbox" id="trails"> Show Trails</label>
+        <span id="stats">Agents: 0 | FPS: 0</span>
+    </div>
+    <script src="initScene.js" type="module"></script>
+</body>
+</html>

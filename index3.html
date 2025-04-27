@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Retail Customer Flow Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; background-color: #f0f0f0; } /* Light grey body bg */
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px 15px; /* Adjusted padding */
+            background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+            border-radius: 5px;
+            z-index: 2;
+            display: flex; /* Use flexbox for better alignment */
+            flex-wrap: wrap; /* Allow items to wrap */
+            gap: 10px; /* Space between controls */
+            align-items: center; /* Center items vertically */
+            max-width: calc(100vw - 40px); /* Prevent overflow on small screens */
+        }
+         #controls > * { /* Style direct children of controls */
+             margin-right: 5px; /* Add small spacing */
+         }
+        #controls label { /* Style labels for better alignment */
+             display: inline-flex;
+             align-items: center;
+         }
+        #stats-container {
+            position: absolute;
+            bottom: 10px; /* Moved to bottom-left */
+            left: 10px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.6); /* Darker background for stats */
+            color: white; /* White text for stats */
+            padding: 8px 12px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        /* Style for Stats.js canvas */
+        #stats-container canvas {
+             position: relative !important; /* Override absolute positioning from stats.js */
+             display: block !important; /* Ensure it fits container */
+             margin-top: 5px;
+        }
+        button {
+             padding: 5px 10px;
+             cursor: pointer;
+        }
+        input[type=range], input[type=number] {
+             vertical-align: middle;
+        }
+         input[type=number] {
+             width: 50px; /* Fixed width for number input */
+         }
+    </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+            "three/examples/jsm/": "https://unpkg.com/three@0.163.0/examples/jsm/",
+            "stats": "https://unpkg.com/three@0.163.0/examples/jsm/libs/stats.module.js"
+          }
+        }
+    </script>
+</head>
+<body>
+    <div id="controls">
+        <button id="startPause">▶ Start</button>
+        <button id="reset">⟲ Reset Sim</button>
+        <button id="resetView">Reset View</button> <span>Speed:</span>
+        <input type="range" id="speed" min="0.1" max="3" step="0.1" value="1">
+        <span>Count:</span>
+        <input type="number" id="count" min="1" max="500" value="50"> <span>Scenario:</span>
+        <select id="scenario">
+            <option value="baseline">Baseline</option>
+            <option value="alternate">Alternate</option>
+        </select>
+        <label><input type="checkbox" id="trails"> Show Trails</label>
+    </div>
+
+    <div id="stats-container">
+        <span id="agents-count">Agents: 0</span><br>
+        <span id="fps">FPS: 0</span>
+    </div>
+
+    <script src="initScene3.js" type="module"></script>
+</body>
+</html>
